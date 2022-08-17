@@ -1,0 +1,124 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<section id="blog" class="blog">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row">
+
+        <div class="col-lg-8 entries">
+
+          <article class="entry entry-single">
+
+            <div class="entry-img">
+              <img src="{{blog.image.url}}" alt="" class="img-fluid">
+            </div>
+
+            <h2 class="entry-title">
+              <a href="blog-single.html">{{blog.name}}</a>
+            </h2>
+
+            <div class="entry-meta">
+              <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">Samil Yesil</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{blog.date}}</time></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-bootstrap-reboot"></i> <a href="#">{{blog.update_at}}</a></li>
+              </ul>
+            </div>
+
+            <div class="entry-content">
+              <p>
+               {{blog.description}}
+              </p>
+
+              
+
+              <blockquote>
+                <p>
+                  Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi aut. Aut eos aliquam doloribus minus autem quos.
+                </p>
+              </blockquote>
+
+              <p>
+                Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.
+                Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.
+                Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.
+              </p>
+
+              <h3>Et quae iure vel ut odit alias.</h3>
+              <p>
+                Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
+                Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
+                Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
+              </p>
+              <img src="assets/img/blog/blog-inside-post.jpg" class="img-fluid" alt="">
+
+              <h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
+              <p>
+                Rerum ea est assumenda pariatur quasi et quam. Facilis nam porro amet nostrum. In assumenda quia quae a id praesentium. Quos deleniti libero sed occaecati aut porro autem. Consectetur sed excepturi sint non placeat quia repellat incidunt labore. Autem facilis hic dolorum dolores vel.
+                Consectetur quasi id et optio praesentium aut asperiores eaque aut. Explicabo omnis quibusdam esse. Ex libero illum iusto totam et ut aut blanditiis. Veritatis numquam ut illum ut a quam vitae.
+              </p>
+              <p>
+                Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
+              </p>
+
+            </div>
+
+           
+              
+
+             
+
+          </article><!-- End blog entry -->
+
+        
+       
+        </div><!-- End blog entries list -->
+
+        <div class="col-lg-4">
+
+          <div class="sidebar">
+
+          
+            
+            <h3 class="sidebar-title">Categories</h3>
+            <div class="sidebar-item categories">
+              <ul>
+                <li><a href="#">{{blog.category}} <span></span></a></li>
+                
+              </ul>
+            </div><!-- End sidebar categories-->
+
+            <h3 class="sidebar-title">Recent Posts</h3>
+            <div class="sidebar-item recent-posts">
+            {% for rdm in randomproducts  %}
+              <div class="post-item clearfix">
+                <img src="{{rdm.image.url}}" alt="">
+                <h4><a href="{% url 'blog_detail' rdm.category.slug rdm.id  %}">{{rdm.name}}</a></h4>
+                <time datetime="2020-01-01">{{rdm.date}}</time>
+              </div>
+              {% endfor %}
+           
+
+            <h3 class="sidebar-title">Tags</h3>
+            <div class="sidebar-item tags">
+              <ul>
+              {% for tag in tags %}
+                <li><a href="{% url 'courses_by_tag' tag.slug %}">{% if tag.slug in request.path %} <b>{{tag.name}}</b>{% else %} {{tag.name}} {% endif %}</a></li>
+            
+            {% endfor %}
+                
+              </ul>
+            </div><!-- End sidebar tags-->
+
+          </div><!-- End sidebar -->
+
+        </div><!-- End blog sidebar -->
+
+      </div>
+
+    </div>
+  </section><!-- End Blog Single Section -->
+
+{% endblock %}
